@@ -1,7 +1,7 @@
 resource "aws_instance" "this" {
   #for_each = var.instances # terraform will give us a variable called each
   ami                    = "ami-09c813fb71547fc4f" # This is our devops-practice AMI ID
-  vpc_security_group_ids = [aws_security_group.docker_practice.id]
+  vpc_security_group_ids = [aws_security_group.docker_kubernetes.id]
   instance_type          = "t3.micro"
  # 20GB is not enough
    root_block_device {
@@ -12,12 +12,12 @@ resource "aws_instance" "this" {
   user_data = file("userdata.sh")
   tags = {
     Name    = "docker"
-    Purpose = "docekr-practice"
+    Purpose = "docekr-kubernetes"
   }
 }
 
-resource "aws_security_group" "docker_practice" {
-  name        = "docker_practice"
+resource "aws_security_group" "docker_kubernetes" {
+  name        = "docker_kubernetes"
   description = "Allow TLS inbound traffic and all outbound traffic"
 
   ingress {
@@ -35,7 +35,7 @@ resource "aws_security_group" "docker_practice" {
   }
 
   tags = {
-    Name = "docker_practice"
+    Name = "docker_kubernetes"
   }
 }
 output "ec2-info" {
