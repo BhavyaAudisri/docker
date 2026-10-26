@@ -1,6 +1,6 @@
 resource "aws_instance" "this" {
   #for_each = var.instances # terraform will give us a variable called each
-  ami                    = "ami-09c813fb71547fc4f" # This is our devops-practice AMI ID
+  ami                    = "ami-0055977a6e828a4f4" # This is our devops-practice AMI ID
   vpc_security_group_ids = [aws_security_group.docker_kubernetes.id]
   instance_type          = "t3.micro"
  # 20GB is not enough
