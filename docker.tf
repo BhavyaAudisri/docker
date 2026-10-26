@@ -11,13 +11,13 @@ resource "aws_instance" "this" {
 
   user_data = file("userdata.sh")
   tags = {
-    Name    = "docker"
-    Purpose = "docekr-kubernetes"
+    Name    = "SRE"
+    Purpose = "ArgoCD-Kubernetes"
   }
 }
 
 resource "aws_security_group" "docker_kubernetes" {
-  name        = "docker_kubernetes"
+  name        = "Argocd_kubernetes"
   description = "Allow TLS inbound traffic and all outbound traffic"
 
   ingress {
